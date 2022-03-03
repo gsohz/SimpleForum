@@ -1,0 +1,81 @@
+{{#each errorsA}}
+<div class="alert alert-danger">
+  {{text}}
+</div>
+
+{{else}}
+
+{{/each}}
+
+<div class="card pt-3">
+
+  <div class="card-body">
+  <h1 id="title">{{question.title}}</h1>
+{{!-- Category --}}
+    <div class="px-2 flex-grow-1">
+      <small class="text-muted">Categoria: {{question.category.name}}</small>
+    </div>
+
+    {{!-- Author --}}
+    <div class="px-2 flex-grow-1">
+      <small class="text-muted">Criado por: {{question.author}}</small>
+    </div>
+
+    {{!-- Question date --}}
+    <div class="px-2 flex-grow-1">
+      <small class="text-muted">Data: {{#formatDate question.date}}{{/formatDate}}</small>
+    </div>
+
+    {{!-- Division line --}}
+    <hr>
+
+    {{!-- Question content --}}
+    <p>{{question.questionContent}}</p>
+
+    {{!-- Answer Button --}}
+    <div class="d-flex align-items-end flex-column">
+        <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#form" aria-expanded="false" aria-controls="form">Responder</button>
+    </div>
+
+  </div>
+</div>
+
+<br>
+
+<div class="collapse" id="form">
+  <div class="card card-body"> 
+    <form action="/pergunta/{{question.slug}}/resposta" method="POST">
+      <label for="answerContent">Resposta: </label>
+      <textarea name="answerContent" placeholder="Digite sua resposta..." class="form-control my-2"></textarea>
+      <button class="btn btn-success" type="submit">Enviar</button>
+    </form>
+  </div>
+  </div>
+
+
+{{#each answers}}
+<div class="card pt-3 m-4">
+
+  <div class="card-body">
+    <div class=" flex-grow-1 mb-3">
+      <small class="text-muted">Respondido por: {{author}}</small>
+    <div class="flex-grow-1">
+      <small class="text-muted">Data: {{#formatDate date}}{{/formatDate}}</small>
+    </div>
+    </div>
+    <div class="px-2">
+      
+  <p>{{answerContent}}</p>
+    </div>
+        <div class="d-flex align-items-end flex-column">
+        <form type="hidden" action="/deletar-resposta" method="post">
+        <input type="hidden" name="idAnswer" value="{{_id}}">
+      {{#compare author ../user ../accountType}}
+        <button type="submit" class="btn btn-danger">Deletar</button>
+      {{/compare}}
+        </form>
+      </div>
+</div>
+</div>
+
+{{/each}}

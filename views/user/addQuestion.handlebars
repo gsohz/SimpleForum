@@ -1,0 +1,45 @@
+{{!-- Show message for each error --}}
+{{#each errorsQ}}
+<div class="alert alert-danger">
+  {{text}}
+</div>
+
+{{else}}
+
+{{/each}}
+<h2>Nova pergunta</h2>
+{{!-- Add new question --}}
+<div class="card">
+  <div class="card-body">
+
+      {{!-- Form new question --}}
+      <form action="/pergunta/add" method="POST">
+        <label for="title">Título: </label>
+        <input type="text" name="title" placeholder="Digite um título..." class="form-control my-2">
+        <label for="questionContent">Pergunta: </label>
+        <textarea name="questionContent" placeholder="Digite sua dúvida..." class="form-control my-2"></textarea>
+        <label for="slug">Slug: </label>
+        <input type="text" name="slug" placeholder="Digite a slug da pergunta..." class="form-control my-2">
+
+        <label for="category">Categoria: </label>
+
+        {{!-- Select category --}}
+        <select name="category" class="form-select form-select-lg my-2" aria-label="">
+
+          {{#each categories}}
+
+          <option value="{{_id}}">{{name}}</option>
+
+          {{else}}
+          <option value="0">Nenhuma categoria registrada</option>
+
+          {{/each}}
+
+        </select>
+        <br>
+        <hr>
+        <button type="submit" class="btn btn-success">Enviar</button>
+      </form>
+
+  </div>
+</div>

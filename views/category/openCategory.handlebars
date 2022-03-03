@@ -1,0 +1,20 @@
+<h2>Categoria {{category.name}}</h2>
+
+{{#each questions}}
+  <div class="card m-4">
+    <div class="card-body">
+        <h3>{{title}}</h3>
+            <div class="px-2 flex-grow-1">
+              <small class="text-muted">Data: {{#formatDate date}}{{/formatDate}}</small>
+            </div>
+            <hr>
+            <p>{{limitContent questionContent}}</p>
+            <div>
+              <a href="/pergunta/{{slug}}"><button type="" class="btn btn-primary btn-sm">Ver pergunta</button></a>
+            </div>
+    </div>
+  </div>
+
+{{else}}
+<h5>Nenhuma Postagem...</h5>
+{{/each}}

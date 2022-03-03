@@ -1,0 +1,23 @@
+{{#each question}}
+<div class="card mt-4">
+  <div class="card-body">
+  <h3>{{title}}</h3>
+  <p>{{questionContent}}</p>
+  <a href="/pergunta/{{slug}}" type="button"  class="btn btn-primary btn-sm">Ver pergunta</a>
+  </div>
+</div>
+
+{{else}}
+<h2>Nenhuma pergunta encontrada para "{{search}}"...</h2>
+{{#if user}}
+<h2>Crie sua pergunta agora mesmo!</h2>
+<a href="/pergunta" type="button"  class="btn btn-success btn-sm mt-3">Criar pergunta</a>
+{{/if}}
+
+{{#unless user}}
+<h2>Crie uma conta ou entre para criar uma pergunta agora mesmo!</h2>
+<a href="/registro" type="button"  class="btn btn-primary btn-sm">Criar conta</a>
+<a href="/login" type="button"  class="btn btn-primary btn-sm">Entrar</a>
+{{/unless}}
+
+{{/each}}

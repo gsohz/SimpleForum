@@ -1,0 +1,41 @@
+{{#if user}}
+{{else}}
+<div class="bg-light p-5 rounded-lg m-3">
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <a class="btn btn-primary btn-lg" href="/registro" role="button">Crie uma conta</a>
+  <a class="btn btn-primary btn-lg" href="/login" role="button">Login</a>
+</div>
+{{/if}}
+
+<hr>
+
+<h2>Últimas postagens: </h2>
+
+{{!-- Question List Index --}}
+{{#each questions}}
+  <div class="card m-4">
+    <div class="card-body">
+        <h3>{{title}}</h3>
+            <div class="px-2 flex-grow-1">
+              <small class="text-muted">Categoria: {{category.name}}</small>
+            </div>
+                <div class="px-2 flex-grow-1">
+      <small class="text-muted">Criado por: {{author}}</small>
+    </div>
+            <div class="px-2 flex-grow-1">
+              <small class="text-muted">Data: {{#formatDate date}}{{/formatDate}}</small>
+            </div>
+            <hr>
+            <p>{{limitContent questionContent}}</p>
+            <div>
+              <a href="/pergunta/{{slug}}" type="button"  class="btn btn-primary btn-sm">Ver pergunta</a>
+            </div>
+    </div>
+  </div>
+
+{{else}}
+<h5>Nenhuma Postagem...</h5>
+{{/each}}

@@ -1,0 +1,58 @@
+<h1>Lista de categorias</h1>
+<hr>
+{{!-- Add new question button --}}
+<a href="/admin/categoria" class='btn btn-success'>Nova categoria</a>
+
+{{!-- Show questions list --}}
+{{#each categories}}
+{{!-- Card --}}
+<div class="card m-4">
+  {{!-- Card body --}}
+  <div class="card-body">
+    {{!-- Card title line --}}
+    <div class="d-flex flex-row bd-highlight mt-1">
+
+      {{!-- Title --}}
+      <div class="p-1 flex-grow-1 bd-highlight">
+        <h4>{{name}}</h4>
+      </div>
+
+      {{!-- Edit button --}}
+      <div class="d-flex align-items-end flex-column mx-2">
+        <a class="btn btn-success link" href="/admin/editar-categoria/{{_id}}">Editar</a>
+      </div>
+
+      {{!-- Delete button --}}
+      <div class="d-flex align-items-end flex-column">
+        <form action="/admin/lista/deletar-categoria" method="post">
+        <input type="hidden" name="idCategory" value="{{_id}}">
+        <button type="submit" class="btn btn-danger">Deletar</button>
+        </form>
+      </div>
+
+    </div>
+
+    {{!-- Question date --}}
+    <div class="px-2 flex-grow-1">
+      <small class="text-muted">Data: {{#formatDate date}}{{/formatDate}}</small>
+    </div>
+
+    {{!-- Division line --}}
+    <hr>
+
+    {{!-- Question content --}}
+    <p>{{tag}}</p>
+
+    {{!-- See question button --}}
+    <div>
+      <a class="btn btn-primary btn-sm link" href="/categoria/{{tag}}">Ver categoria</a>
+    </div>
+  </div>    
+</div>
+
+{{!-- In case there is no questions --}}
+{{else}}
+
+<h4 class="mt-3">Nenhuma categoria registrada... Crie uma categoria!</h4>
+
+{{/each}}

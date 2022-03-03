@@ -1,0 +1,59 @@
+{{!-- Navigation bar --}}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="#">Fórum de perguntas</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link active " aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pergunta/lista">Perguntas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categoria/lista">Categorias</a>
+        </li>
+
+        <div>
+          <div class="d-inline-flex px-2">
+            <form class="form-inline my-2 my-lg-0" action="/pesquisa" method="POST">
+              <input class="form-control mr-sm-2 inline" name="search" type="search" size="30" placeholder="Pesquise algum assunto..." aria-label="Search">
+          </div>
+            <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+          </form>
+        </div>
+
+
+        <div class="ProfileNav">
+                {{#if user}}
+          
+
+                <li class="nav-item dropdown flex-end">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{{user.nickName}}</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    </ul>
+                </li>
+
+                </div>
+                
+                {{else}}
+
+                {{/if}}
+              </ul>
+        </div>
+  </div>
+
+</nav>

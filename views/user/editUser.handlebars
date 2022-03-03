@@ -1,0 +1,20 @@
+{{#each errorsEU}}
+<div class="alert alert-danger">
+  {{text}}
+</div>
+{{/each}}
+
+<h3>Edite as informações da sua conta</h3>
+<div class="card d-flex align-item-center">
+  <div class="card-body">
+    <form action="/edit-profile" method="POST">
+    <input name="id" value="{{id}}" type="hidden">
+      <label for="name">Nome: </label>
+      <input type="text" name="name" class="form-control" value="{{name}}">
+      <label for="nickName">Apelido: </label>
+      <input type="text" name="nickName" class="form-control" value="{{nickName}}">
+      <label for="email">Email: </label>
+      <input type="email" name="email" class="form-control" value="{{email}}">
+      <button class="btn btn-success mt-4">Editar conta</button>
+    </form>
+  </div>
